@@ -18,6 +18,6 @@ allprojects {
 ```groovy
 dependencies {
     ...
-    compile 'com.github.alfredxl:localgallery:v1.0.0'
+    compile 'com.github.alfredxl:localgallery:v1.0.1'
 }
 ```
