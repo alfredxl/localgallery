@@ -10,14 +10,15 @@
         android:allowBackup="true"
         android:supportsRtl="true">
         <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="${applicationId}.gallery_provider"
+            android:name="com.yancy.gallerypick.provider.GalleryProvider"
+            android:authorities="com.yancy.gallerypick.gallery_provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/gallery_provider_paths"/>
         </provider>
+
         <activity
             android:name=".activity.GalleryPickActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

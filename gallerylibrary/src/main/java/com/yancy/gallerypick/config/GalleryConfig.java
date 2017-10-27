@@ -1,7 +1,5 @@
 package com.yancy.gallerypick.config;
 
-import android.content.Context;
-
 import com.yancy.gallerypick.inter.IHandlerCallBack;
 import com.yancy.gallerypick.inter.ImageLoader;
 
@@ -14,14 +12,13 @@ import java.util.List;
  * Created by Yancy on 2016/1/27.
  */
 public class GalleryConfig {
-
+    private static final String PROVIDER = "com.yancy.gallerypick.gallery_provider"; // 兼容android 7.0 设置
     private ImageLoader imageLoader;    // 图片加载器
     private IHandlerCallBack iHandlerCallBack;   // GalleryPick 生命周期接口
 
     private boolean multiSelect;        // 是否开启多选  默认 ： false
     private int maxSize;                // 配置开启多选时 最大可选择的图片数量。   默认：9
     private boolean isShowCamera;       // 是否开启相机 默认：true
-    private String provider;            // 兼容android 7.0 设置
     private String filePath;            // 拍照以及截图后 存放的位置。    默认：/Gallery/Pictures
     private ArrayList<String> pathList;      // 已选择照片的路径
     private boolean isOpenCamera;             // 是否直接开启相机    默认：false
@@ -54,7 +51,6 @@ public class GalleryConfig {
         this.aspectRatioY = builder.aspectRatioY;
         this.maxWidth = builder.maxWidth;
         this.maxHeight = builder.maxHeight;
-        this.provider = builder.provider;
         this.builder = builder;
     }
 
@@ -76,15 +72,9 @@ public class GalleryConfig {
         private int maxWidth = 500;
         private int maxHeight = 500;
 
-        private String provider;
-
         private ArrayList<String> pathList = new ArrayList<>();
 
         private boolean isOpenCamera = false;
-
-        public Builder(Context context){
-            provider = context.getApplicationContext().getPackageName() + ".gallery_provider";
-        }
 
         public Builder crop(boolean isCrop) {
             this.isCrop = isCrop;
@@ -218,7 +208,7 @@ public class GalleryConfig {
     }
 
     public String getProvider() {
-        return provider;
+        return PROVIDER;
     }
 }
 /*
