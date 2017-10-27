@@ -1,5 +1,7 @@
 package com.yancy.gallerypick.config;
 
+import android.content.Context;
+
 import com.yancy.gallerypick.inter.IHandlerCallBack;
 import com.yancy.gallerypick.inter.ImageLoader;
 
@@ -80,9 +82,8 @@ public class GalleryConfig {
 
         private boolean isOpenCamera = false;
 
-        public Builder provider(String provider) {
-            this.provider = provider;
-            return this;
+        public Builder(Context context){
+            provider = context.getApplicationContext().getPackageName() + ".gallery_provider";
         }
 
         public Builder crop(boolean isCrop) {

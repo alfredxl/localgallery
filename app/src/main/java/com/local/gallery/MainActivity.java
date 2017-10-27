@@ -35,10 +35,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addPicture() {
-        GalleryConfig galleryConfig = new GalleryConfig.Builder()
+        GalleryConfig galleryConfig = new GalleryConfig.Builder(this)
                 .imageLoader(new GlideLoader())    // ImageLoader 加载框架（必填）
                 .iHandlerCallBack(iHandlerCallBack)     // 监听接口（必填）
-                .provider("com.local.gallery.provider")   // provider (必填)
                 .pathList(new ArrayList<String>())                         // 记录已选的图片
                 .multiSelect(true, 22)                   // 配置是否多选的同时 配置多选数量   默认：false ， 9
                 .crop(true, 1, 1, 500, 500)             // 配置裁剪功能的参数，   默认裁剪比例 1:1
