@@ -11,7 +11,7 @@
         android:supportsRtl="true">
         <provider
             android:name="com.yancy.gallerypick.provider.GalleryProvider"
-            android:authorities="com.yancy.gallerypick.gallery_provider"
+            android:authorities="${applicationId}.gallery_provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

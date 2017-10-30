@@ -1,5 +1,7 @@
 package com.yancy.gallerypick.config;
 
+import android.content.Context;
+
 import com.yancy.gallerypick.inter.IHandlerCallBack;
 import com.yancy.gallerypick.inter.ImageLoader;
 
@@ -12,7 +14,6 @@ import java.util.List;
  * Created by Yancy on 2016/1/27.
  */
 public class GalleryConfig {
-    private static final String PROVIDER = "com.yancy.gallerypick.gallery_provider"; // 兼容android 7.0 设置
     private ImageLoader imageLoader;    // 图片加载器
     private IHandlerCallBack iHandlerCallBack;   // GalleryPick 生命周期接口
 
@@ -20,6 +21,7 @@ public class GalleryConfig {
     private int maxSize;                // 配置开启多选时 最大可选择的图片数量。   默认：9
     private boolean isShowCamera;       // 是否开启相机 默认：true
     private String filePath;            // 拍照以及截图后 存放的位置。    默认：/Gallery/Pictures
+    private String provider;               // 兼容android 7.0 设置
     private ArrayList<String> pathList;      // 已选择照片的路径
     private boolean isOpenCamera;             // 是否直接开启相机    默认：false
 
@@ -45,6 +47,7 @@ public class GalleryConfig {
         this.isShowCamera = builder.isShowCamera;
         this.pathList = builder.pathList;
         this.filePath = builder.filePath;
+        this.provider = builder.provider;
         this.isOpenCamera = builder.isOpenCamera;
         this.isCrop = builder.isCrop;
         this.aspectRatioX = builder.aspectRatioX;
@@ -55,7 +58,7 @@ public class GalleryConfig {
     }
 
     public static class Builder implements Serializable {
-
+        private static final String PROVIDER = ".gallery_provider"; // 兼容android 7.0 设置
         private static GalleryConfig galleryConfig;
 
         private ImageLoader imageLoader;
@@ -65,6 +68,7 @@ public class GalleryConfig {
         private int maxSize = 9;
         private boolean isShowCamera = true;
         private String filePath = "/Gallery/Pictures";
+        private String provider;
 
         private boolean isCrop = false;
         private float aspectRatioX = 1;
@@ -75,6 +79,10 @@ public class GalleryConfig {
         private ArrayList<String> pathList = new ArrayList<>();
 
         private boolean isOpenCamera = false;
+
+        public Builder(Context mContext) {
+            provider = mContext.getPackageName() + PROVIDER;
+        }
 
         public Builder crop(boolean isCrop) {
             this.isCrop = isCrop;
@@ -208,7 +216,7 @@ public class GalleryConfig {
     }
 
     public String getProvider() {
-        return PROVIDER;
+        return provider;
     }
 }
 /*

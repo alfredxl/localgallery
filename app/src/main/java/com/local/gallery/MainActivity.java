@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addPicture() {
-        GalleryConfig galleryConfig = new GalleryConfig.Builder()
+        GalleryConfig galleryConfig = new GalleryConfig.Builder(this)
                 .imageLoader(new GlideLoader())    // ImageLoader 加载框架（必填）
                 .iHandlerCallBack(iHandlerCallBack)     // 监听接口（必填）
                 .pathList(new ArrayList<String>())                         // 记录已选的图片
